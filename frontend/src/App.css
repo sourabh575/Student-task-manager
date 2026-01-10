@@ -1,0 +1,16 @@
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
