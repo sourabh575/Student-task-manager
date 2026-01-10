@@ -46,13 +46,26 @@ const Signup = () => {
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
       setSuccess('Account created! Redirecting...');
+      alert('✅ Account created successfully! Welcome to Enginow!');
       setTimeout(() => {
         navigate('/');
         window.location.reload();
       }, 1500);
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.message || err.message || 'Signup failed');
+      const errorMessage = err.response?.data?.message || err.message || 'Signup failed';
+      setError(errorMessage);
+      
+      // Show alert for signup errors
+      if (err.response?.status === 400 && errorMessage.includes('already exists')) {
+        alert('❌ Email already registered. Please log in or use a different email.');
+      } else if (err.message === 'Passwords do not match') {
+        alert('❌ Passwords do not match. Please check your password confirmation.');
+      } else if (err.message === 'Password must be at least 6 characters') {
+        alert('❌ Password must be at least 6 characters long.');
+      } else {
+        alert(`❌ ${errorMessage}`);
+      }
     }
   };
 

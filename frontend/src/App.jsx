@@ -12,7 +12,116 @@ import { auth } from './utils/api';
 
 // --------- Protected Route Component ----------
 const ProtectedRoute = ({ element, isAuthenticated }) => {
-  return isAuthenticated ? element : <Navigate to="/login" replace />;
+  if (!isAuthenticated) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)',
+        flexDirection: 'column',
+        gap: '2rem',
+        padding: '2rem'
+      }}>
+        <div style={{
+          textAlign: 'center',
+          maxWidth: '500px'
+        }}>
+          <div style={{
+            fontSize: '4rem',
+            marginBottom: '1rem'
+          }}>🔒</div>
+          <h1 style={{
+            fontSize: '2rem',
+            fontWeight: '700',
+            color: '#1f2937',
+            margin: '0 0 1rem 0'
+          }}>
+            You Need to Sign Up
+          </h1>
+          <p style={{
+            fontSize: '1.125rem',
+            color: '#6b7280',
+            marginBottom: '0.5rem',
+            lineHeight: '1.6'
+          }}>
+            Create an account to start managing your tasks.
+          </p>
+          <p style={{
+            fontSize: '0.9375rem',
+            color: '#9ca3af',
+            marginBottom: '2rem',
+            lineHeight: '1.5'
+          }}>
+            Already have an account? You can log in with your existing credentials.
+          </p>
+          <div style={{
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <a 
+              href="/signup" 
+              style={{
+                padding: '0.875rem 2rem',
+                backgroundColor: '#10b981',
+                color: '#ffffff',
+                textDecoration: 'none',
+                borderRadius: '0.5rem',
+                fontWeight: '600',
+                fontSize: '1rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#059669';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 6px 16px rgba(16, 185, 129, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#10b981';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+              }}
+            >
+              Create Account
+            </a>
+            <a 
+              href="/login" 
+              style={{
+                padding: '0.875rem 2rem',
+                backgroundColor: '#e5e7eb',
+                color: '#1f2937',
+                textDecoration: 'none',
+                borderRadius: '0.5rem',
+                fontWeight: '600',
+                fontSize: '1rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#d1d5db';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#e5e7eb';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Log In
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  return element;
 };
 
 // --------- Public Route Component (redirect if logged in) ----------

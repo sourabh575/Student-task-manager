@@ -35,13 +35,24 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
       setSuccess('Login successful! Redirecting...');
+      alert('✅ Login successful! Welcome back!');
       setTimeout(() => {
         navigate('/');
         window.location.reload();
       }, 1500);
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.message || err.message || 'Login failed');
+      const errorMessage = err.response?.data?.message || err.message || 'Login failed';
+      setError(errorMessage);
+      
+      // Show alert for authentication errors
+      if (err.response?.status === 401) {
+        alert('❌ Invalid email or password. Please check your credentials or sign up if you don\'t have an account.');
+      } else if (err.response?.status === 404) {
+        alert('❌ User not found. Please sign up to create an account.');
+      } else {
+        alert(`❌ ${errorMessage}`);
+      }
     }
   };
 
