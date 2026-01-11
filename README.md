@@ -113,7 +113,7 @@ Enginow/
    npx nodemon index.js
    ```
 
-   ✅ Backend running at: `http://localhost:5000`
+   ✅ Backend running at: `https://student-task-manager-backend-wcae.onrender.com/`
 
 ### Frontend Setup
 
@@ -132,7 +132,7 @@ Enginow/
    npm run dev
    ```
 
-   ✅ Frontend running at: `http://localhost:5173`
+   ✅ Frontend running at: `https://student-task-manager-topaz.vercel.app/`
 
 ---
 
@@ -350,11 +350,6 @@ cd frontend && npm run build
 - Check MONGO_URI in .env
 - Verify IP whitelist if using Atlas
 
-**Port Already in Use**
-```bash
-# Kill process on port 5000
-npx kill-port 5000
-```
 
 **JWT_SECRET not defined**
 - Add JWT_SECRET to .env file
