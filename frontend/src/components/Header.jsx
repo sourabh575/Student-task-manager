@@ -26,7 +26,7 @@ const Header = ({ onLogout }) => {
         {/* Logo/Brand */}
         <Link to="/" className="header-brand">
           <div className="header-brand-icon">✓</div>
-          <span>Enginow</span>
+          <span>TASK</span>
         </Link>
 
         {/* Navigation Actions */}
